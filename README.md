@@ -5,13 +5,8 @@
 Antes de tudo, é necessário clonar este repositório em sua máquina. Abra o terminal (CMD, PowerShell ou VSCode) e digite:
 
 ```bash
-git clone https://github.com/davissontiago/BitDogLab.git
+git clone https://github.com/davissontiago/Tutorial_Servidor_Flask_Pico
 ```
-
-Depois, navegue até a pasta: `Servidor_Flask_Pico_Wifi`
-e abra no VsCode.
-
-![pasta](images/pasta.png)
 ---
 
 ## 2. Instalar o Python
