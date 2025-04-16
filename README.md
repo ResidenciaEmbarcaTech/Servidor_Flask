@@ -17,6 +17,7 @@ Este projeto requer Python instalado na sua máquina. Caso ainda não tenha:
 - Durante a instalação, marque a opção **"Add Python to PATH"**
 
 ![Local de download](images/downloadPython.png)
+
 ---
 
 ## 3. Instalar Dependências
@@ -28,9 +29,8 @@ pip install flask
 pip install flask-socketio
 ```
 
-> Obs: o nome correto do pacote é `flask-socketio` com hífen.
-
 ![Cmd com Administrador](images/cmd.png)
+
 ---
 
 ## 4. Abrir o Terminal no VSCode
@@ -61,25 +61,26 @@ Após iniciar, você verá uma saída semelhante a:
 
 ![Saida Terminal](images/saidaTerminal.png)
 
-> Anote o segundo endereço (no exemplo acima, `192.168.37.138`). Esse é o IP que será usado pela placa RP2040 para se comunicar com o servidor e deve ser substituido no arquivo **`picow_http_client.c`**
+> Anote o segundo endereço (no exemplo acima, `192.168.37.138`). Esse é o IP que será usado pela placa RP2040 para se comunicar com o servidor e deve ser substituido no arquivo **picow_http_client.c**
 
 ![Local para trocar ip](images/ipServidor.png)
-###### O link para acessar o site é composto pelo ip e a porta 5000.
-###### Exemplo: `http://192.168.37.138:5000`
+
+> O link para acessar o site é composto pelo ip e a porta 5000. Exemplo: **`http://192.168.37.138:5000`**
+
 ---
 
 ## 6. Configurar o Wi-Fi no Projeto RP2040
 
-O nome e senha da rede Wi-Fi estão configurados no arquivo `CMakeLists.txt` do projeto C para a RP2040. 
+O nome e senha da rede Wi-Fi estão configurados no arquivo **CMakeLists.txt** do projeto C para a RP2040. 
 
-Abra esse arquivo e substitua:
+Abra esse arquivo e substitua: "SUA REDE" e "SENHA DA REDE"
 
 ![Nome e Rede](images/redeSenha.png)
 
 Substitua pelos dados corretos da sua rede Wi-Fi (SSID e senha).
 
-### Observação:
-#### `O computador (local onde o servidor está sendo hospedado) precisa estar na mesma rede wi-fi configurada na RP2040 para ela conseguir se comunicar com o servidor.`
+ > **Observação:** O computador (local onde o servidor está sendo hospedado) precisa estar na mesma rede wi-fi configurada na RP2040 para ela conseguir se comunicar com o servidor.
+
 ---
 
 ## 7. Compilar e Enviar Código para a RP2040
@@ -87,6 +88,7 @@ Substitua pelos dados corretos da sua rede Wi-Fi (SSID e senha).
 Use o VsCode para compilar e enviar o código para a placa RP2040 normalmente.
 
 ![run](images/run.png)
+
 ---
 
 ## 8. Como Funciona a Comunicação
@@ -99,6 +101,7 @@ Use o VsCode para compilar e enviar o código para a placa RP2040 normalmente.
 Esse fluxo permite que um botão físico da placa RP2040 controle elementos gráficos de uma interface web em tempo real.
 
 ![onoff](images/onoff.png)
+
 ---
 
 Se tiver dúvidas ou quiser contribuir, fique à vontade para entrar em contato pelo email: `davissontiagolf@gmail.com` 
