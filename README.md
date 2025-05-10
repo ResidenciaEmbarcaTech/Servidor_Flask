@@ -100,6 +100,7 @@ py server.py
 ```
 
 ---
+## Tela HTML
 ![Tela HTML](images/tela_html.png "Tela HTML")
 
 ---
