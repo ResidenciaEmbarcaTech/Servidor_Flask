@@ -1,17 +1,13 @@
-# Importa as bibliotecas Flask e SocketIO
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 
-# Cria a instância do Flask
 app = Flask(__name__)
-
-# Configura o SocketIO para permitir conexões de qualquer origem
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Rota principal que serve a página HTML
 @app.route('/')
 def index():
-    return render_template('index.html')  # Renderiza o template web/templates/index.html
+    return render_template('index.html')  
 
 @app.route('/CLICK', methods=['GET', 'POST'])
 def click():
@@ -25,8 +21,20 @@ def solto():
     socketio.emit('command', {'action': 'solto'})  # Envia comando para OFF
     return 'solto command sent', 200
 
+@app.route('/TEMP')
+def temperature():
+    value = request.args.get('value', type=float)
+    print(f"Recebida temperatura: {value:.2f} °C")
+    socketio.emit('temperature', {'value': value})
+    return f"Temperatura {value:.2f} enviada", 200
 
-# Ponto de entrada principal da aplicação
+@app.route('/direcao')
+def direcao():
+    valor = request.args.get('valor')
+    print(f"Direção recebida: {valor}")
+    socketio.emit('direcao', {'valor': valor})
+    return f"Direção {valor} recebida", 200
+
 if __name__ == '__main__':
-    # Inicia o servidor Flask com suporte a WebSockets
     socketio.run(app, host='0.0.0.0', port=5000)
+

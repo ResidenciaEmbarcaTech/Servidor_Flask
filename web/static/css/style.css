@@ -1,0 +1,80 @@
+/* 1. Body e container principal */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+#main-container {
+  display: flex;
+  justify-content: space-between; /* Espaço igual entre itens */
+  align-items: center;            /* Alinha verticalmente */
+  width: 90%;
+  max-width: 1200px;
+  gap: 20px;                       /* Espaço extra */
+}
+
+/* 2. Estilo comum dos “cards” */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  flex: 1;                         /* Cada card cresce igualmente */
+  min-width: 180px;                /* Evita ficar muito estreito */
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* 3. Status box */
+#status-box {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: red;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* 4. Temperatura */
+#temp-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#temp-label {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+#temp-value {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #555;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #f7f9fb;
+}
+
+/* 5. Rosa dos ventos interativa */
+#compass polygon {
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+#compass polygon.active {
+  fill: #ff6666 !important;
+}

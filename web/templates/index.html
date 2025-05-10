@@ -2,55 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Status Box</title>
-  <style>
-    #status-box {
-      width: 200px;
-      height: 200px;
-      background-color: red;
-      color: white;
-      font-size: 2em;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 100px auto;
-      border-radius: 20px;
-      transition: background-color 0.3s ease;
-    }
-  </style>
+  <title>Tarefa Capir - Larissa Souza</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-  <div id="status-box">OFF</div>
+  <div id="main-container">
+
+    <div id="status-box" class="card">OFF</div>
+  
+    <div id="compass-container" class="card">
+      <svg id="compass" viewBox="0 0 200 200" width="300" height="300">
+        <!-- círculos de fundo -->
+        <circle cx="100" cy="100" r="98" fill="#f7f7f7" stroke="#333" stroke-width="2"/>
+        <!-- Setas principais -->
+        <polygon id="Norte"     points="100,10  95,100 105,100" fill="#ddd" stroke="#333"/>
+        <polygon id="Sul"       points="100,190 95,100 105,100" fill="#ddd" stroke="#333"/>
+        <polygon id="Leste"     points="190,100 100,95 100,105" fill="#ddd" stroke="#333"/>
+        <polygon id="Oeste"     points="10,100  100,95 100,105" fill="#ddd" stroke="#333"/>
+        <!-- Setas secundárias -->
+        <polygon id="Nordeste"  points="157,30 100,100 130,100" fill="#eee" stroke="#333"/>
+        <polygon id="Sudeste"   points="157,170 100,100 130,100" fill="#eee" stroke="#333"/>
+        <polygon id="Noroeste"  points="43,30  100,100 70,100"  fill="#eee" stroke="#333"/>
+        <polygon id="Sudoeste"  points="43,170 100,100 70,100"  fill="#eee" stroke="#333"/>
+        <text x="100" y="25"  text-anchor="middle">N</text>
+        <text x="140" y="55"  text-anchor="middle">NE</text>
+        <text x="175" y="100" text-anchor="middle">L</text>
+        <text x="140" y="145" text-anchor="middle">SE</text>
+        <text x="100" y="175" text-anchor="middle">S</text>
+        <text x="60"  y="145" text-anchor="middle">SO</text>
+        <text x="25"  y="100" text-anchor="middle">O</text>
+        <text x="60"  y="55"  text-anchor="middle">NO</text>
+      </svg>
+    </div>
+
+    <div id="temp-box" class="card">
+      <div id="temp-label">Temperatura:</div>
+      <div id="temp-value">-- °C</div>
+    </div>
+  </div>
 
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-  <script>
-    const socket = io();
-
-    const box = document.getElementById('status-box');
-    let isOn = false;
-
-    socket.on('connect', () => {
-      console.log('Conectado ao servidor via Socket.IO');
-    });
-
-    socket.on('command', (data) => {
-      if (data.action === 'click') {
-        if (!isOn) {  // Se o estado for OFF, muda para ON
-          box.style.backgroundColor = 'green';
-          box.textContent = 'ON';
-          isOn = true;
-        }
-      } else if (data.action === 'solto') {
-        if (isOn) {  // Se o botão foi solto, volta para OFF
-          box.style.backgroundColor = 'red';
-          box.textContent = 'OFF';
-          isOn = false;
-        }
-      }
-    });
-  </script>
-
+  <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

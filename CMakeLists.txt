@@ -1,7 +1,6 @@
 # Generated Cmake Pico project file
 
 cmake_minimum_required(VERSION 3.13)
-
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -50,8 +49,8 @@ target_include_directories(example_lwip_http_util INTERFACE
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(picow_http_client picow_http_client.c )
-set(WIFI_SSID "SUA REDE") # Nome da sua rede wifi
-set(WIFI_PASSWORD "SENHA DA REDE") # Senha da rede wifi
+set(WIFI_SSID "iPhone") # Nome da sua rede wifi
+set(WIFI_PASSWORD "01012021") # Senha da rede wifi
 target_compile_definitions(picow_http_client PRIVATE
         WIFI_SSID=\"${WIFI_SSID}\"
         WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
@@ -69,6 +68,7 @@ target_link_libraries(picow_http_client
         pico_stdlib
         pico_cyw43_arch_lwip_threadsafe_background
         example_lwip_http_util
+        hardware_adc
         )
 
 # Add the standard include files to the build
@@ -102,6 +102,7 @@ target_link_libraries(picow_http_client_verify
         pico_cyw43_arch_lwip_threadsafe_background
         example_lwip_http_util
         pico_stdlib
+        hardware_adc
         )
 pico_add_extra_outputs(picow_http_client_verify)
 
